@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Button, Card } from '@mui/material'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import { Button, Card, LinearProgressWithLabel } from "@mui/material";
+import axios from "axios";
 
 export default function Page() {
   const [level, setLevel] = useState(0);
@@ -64,6 +64,11 @@ export default function Page() {
           ) : (
             <p className="text-red-500">NO NEED OF PICKUP</p>
           )}
+          <progress
+            className="progress progress-accent w-full"
+            value="70"
+            max="100"
+          ></progress>
         </Card>
         <Card className="p-4 bg-white rounded-lg shadow-md">
           <h1 className="text-xl font-semibold mb-2">BIN - 2</h1>
@@ -162,4 +167,3 @@ export default function Page() {
     </div>
   );
 }
-
