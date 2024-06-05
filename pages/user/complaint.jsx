@@ -26,8 +26,6 @@ export default function Page() {
         alert("complaint registered succesfully");
       }
     }
-    // console.log("title : ", title);
-    // console.log("description : ", description);
   };
 
   if (token) {
