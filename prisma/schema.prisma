@@ -16,6 +16,7 @@ datasource db {
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   username String @unique
+  email String
   password String
   level Levels[]  
   complaints Complaint[]
@@ -39,4 +40,10 @@ model Complaint {
   title  String
   resolved Boolean @default(false)
   PostedBy User @relation(fields: [userId],references: [id])
+}
+
+model Monitor {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name String @unique
+  password String
 }
