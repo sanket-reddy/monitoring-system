@@ -27,7 +27,10 @@ export default function Page() {
   console.log("compliants : ",complaints);
   if (!token) {
     return <div> no token</div>;
-  } else {
+  } else if(complaints.length === 0) {
+    return <div>No compliants are there</div>
+  }
+   else {
     return (
       <div className="lg:flex lg:flex-wrap">
         {complaints.map((item)=>(

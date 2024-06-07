@@ -25,7 +25,7 @@ export default function Home() {
 
   useEffect(() => {
     users.forEach((user) => {
-      if (addedUsers.has(user.id)) return; // Skip if already added
+      if (addedUsers.has(user.id)) return; 
 
       const wetLevel = user.wetLevel && user.wetLevel.length > 0
         ? user.wetLevel[user.wetLevel.length - 1].level
@@ -103,6 +103,8 @@ export default function Home() {
             username={user.username}
             serial={index + 1}
             wetlevel={wetLevel}
+            lat = {user.lat}
+            lon = {user.lon}
             drylevel={dryLevel}
             wetaverageLevel={wetAverageLevel}
             dryaverageLevel={dryAverageLevel}

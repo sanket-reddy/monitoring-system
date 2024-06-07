@@ -11,8 +11,8 @@ export default function BinCard(props) {
             let dryResp = await axios.get("https://api.thingspeak.com/channels/2570493/fields/2.json?api_key=4Z1AMMHKEW6ZP6YT&results=2")
             setWetLevel(wetResp.data.feeds[0].field1)
             setDryLevel(dryResp.data.feeds[0].field1)
-            setWetLevel(54);
-            setDryLevel(44);
+            setWetLevel(0);
+            setDryLevel(0);
             if( wetlevel && drylevel ){
                 let resp = await axios.post("/api/storedb",{userId : props.id, wetLevel : wetlevel, dryLevel : drylevel });
                 console.log(resp.data);
@@ -34,7 +34,7 @@ export default function BinCard(props) {
         DRY AVERAGE = {props.dryaverageLevel}
       </h2>
       <h3 className="text-gray-700 text-sm">
-        Location : 77.59337820456454, 12.979826299677097
+        Location : {props.lat}, {props.lon}
       </h3>
       {props.wetlevel > props.wetaverageLevel ? (
             <div>
