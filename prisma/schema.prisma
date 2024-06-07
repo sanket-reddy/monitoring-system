@@ -16,14 +16,25 @@ datasource db {
 model User {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   username String @unique
-  email String
   password String
-  level Levels[]  
+  lat   String
+  lon   String
+  email String
+  dryLevel DryLevels[]
+  wetLevel WetLevels[]  
   complaints Complaint[]
 
 }
 
-model Levels{
+model DryLevels{
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  level  Float
+  userId  String @db.ObjectId
+  createdAt DateTime @default(now())   
+  Owner  User @relation(fields: [userId] ,references: [id])
+}
+
+model WetLevels{
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   level  Float
   userId  String @db.ObjectId

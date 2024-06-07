@@ -5,12 +5,12 @@ const prisma = new PrismaClient();
 export default async function handler(req , res) {
   const SecretKey = "mini-project";
   try {
-    let { username, password } = req.body;
+    let { username, password, lat,email, lon } = req.body;
     const user = await prisma.user.findUnique({ where : {username} });
     if (user) {
       return res.status(200).json({ message: "username already exists !!!" });
     } else {
-      let newUser = await prisma.user.create({data : {username, password}});
+      let newUser = await prisma.user.create({data : {username, password, lat ,email ,lon}});
       let token = jwt.sign(newUser.id, SecretKey);
       if(newUser){
         return res.status(200).json({ message: "signed in", token });

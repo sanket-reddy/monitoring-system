@@ -3,12 +3,10 @@ import nodemailer from "nodemailer";
 const prisma = new PrismaClient();
 export default async function handler(req, res){
     try{
-        const {query} = req;
-        let level = query.level;
-        const userId = query.userId
-        level = Number(level);
-        const newLevel = await prisma.levels.create({data : {level,userId}})
-        if(newLevel){
+        let {wetLevel, dryLevel, userId} = req.body;
+        const newWetLevel = await prisma.wetLevels.create({data : {level :wetLevel , userId}})
+        const newDryLevel = await prisma.dryLevels.create({data : {level :dryLevel , userId}})
+        if(newDryLevel && newWetLevel){
             return res.status(200).json({message : "successfully added"})
         }else{
             return res.status(400).json({message : "something went wrong"})

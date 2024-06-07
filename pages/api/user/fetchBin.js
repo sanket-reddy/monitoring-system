@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     let userId = jwt.decode(token);
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      include: { level: true, complaints: true },
+      include: { wetLevel: true,dryLevel : true ,  complaints: true },
     });
     if (user) {
       return res.status(200).json({ message: "user found", user });

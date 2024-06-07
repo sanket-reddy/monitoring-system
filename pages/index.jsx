@@ -12,7 +12,6 @@ export default function Page() {
         const response = await axios.get("https://api.thingspeak.com/channels/2570493/feeds.json?api_key=4Z1AMMHKEW6ZP6YT&results=2");
         console.log(response.data);
         setLevel(response.data.feeds[0].field1);
-        // setLevel(70);
       } catch (error) {
         console.error("Error fetching level data:", error);
       }
